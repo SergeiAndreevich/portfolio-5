@@ -1,16 +1,25 @@
 .container{
 	width: 90%;
 	margin: 0 auto;
-	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
 }
 img{
 	width: 50%;
 	background-color: black;
 }
+.line{
+	width: 100vw;
+	height: 4px;
+	background-color: black;
+	margin: 20px 0;
+}
 
 .header{
 	padding-top: 40px;
 	padding-bottom: 40px;
+	text-align: center;
+
 }
 .nav{
 	display: flex;
@@ -24,15 +33,53 @@ img{
 .header__menu-item a{
 	color: black;
 }
+.header__middle{
+	position: relative;
+}
 .header__image1{
 	width: 120px;
 	height: auto;
+	position: absolute;
+	bottom: 40%;
+	left: 10%;
 }
 .header__image2{
 	width: 300px;
 	height: 100px;
+	position: absolute;
+	bottom: 15%;
+	right: 15%;
 }
 .header__middle h1{
+	font-size: 132px;
+	text-transform: uppercase;
+	font-weight: 700;
+	padding: 60px 0;
+	line-height: 150px;
+}
+.header__span1{
+	margin-left: 200px;
+}
+.header__span2{
+	margin-right: 460px;
+}
+.header__bottom{
+	display: flex;
+	justify-content: space-between;
+}
+.bottom-left{
+	font-size: 28px;
+	font-weight: 500;
+}
+.bottom-right{
+	transform: rotate(-90deg);
+}
+
+.humanity{
+	padding: 60px 0;
+}
+h2{
+	font-weight: 500;
 	font-size: 80px;
-	font-weight: bold;
+	text-transform: uppercase;
 }
