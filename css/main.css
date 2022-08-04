@@ -1,0 +1,38 @@
+.container{
+	width: 90%;
+	margin: 0 auto;
+	text-align: center;
+}
+img{
+	width: 50%;
+	background-color: black;
+}
+
+.header{
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+.nav{
+	display: flex;
+	justify-content: space-between;
+	width: 500px;
+}
+.header__menu{
+	display: flex;
+	text-decoration: none;
+}
+.header__menu-item a{
+	color: black;
+}
+.header__image1{
+	width: 120px;
+	height: auto;
+}
+.header__image2{
+	width: 300px;
+	height: 100px;
+}
+.header__middle h1{
+	font-size: 80px;
+	font-weight: bold;
+}
