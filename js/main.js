@@ -1,3 +1,1 @@
-prompt () {
-	hello
-}
+alert('hello world!');
