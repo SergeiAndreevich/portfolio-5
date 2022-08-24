@@ -62,3 +62,25 @@ if(personalMovieDB.count < 10){
 }else {
 	console.log('Ошибка');
 };
+
+function sayHi () {
+	console.log('Hello');
+}; ///declaration
+
+sayHi();
+
+const newFunc = function (text) {
+	console.log(text);
+};   ///epression
+
+newFunc('hello everyone');
+
+
+
+const newSentence = 'One more word';
+console.log(newSentence.indexOf('fuck')); //то есть мы так можем проверить, есть ли это 
+//если есть, то вернет где. Нет? тогда будет -1
+
+console.log(newSentence.slice(-4,-1));
+//обрезает справа. Должно быть wor
+// да, так и вышло. (3,8) то вырежет с 3 по 8, не включая 8
