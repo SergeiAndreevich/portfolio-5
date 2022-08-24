@@ -1,6 +1,16 @@
 alert('hello world!');
 
-var numberOfFilms = +prompt('Сколько фильмов вы смотрели?', '');
+let numberOfFilms;
+function start () {
+	numberOfFilms = +prompt('Сколько фильмов вы смотрели?', ''); 
+	while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+		// statement
+		numberOfFilms = +prompt('Сколько фильмов вы смотрели?', '');
+	}
+}
+start();
+
+
 // alert(`Вау, целых ${numberOfFilms}`);
 
 let personalMovieDB = {
@@ -39,30 +49,50 @@ let i = 0;
 let nameOfFilm;
 let rateOfFilm;
 
-for(let i = 0; i < 2; i++){
-	nameOfFilm = prompt('Один из последних просмотренных фильмов', '');
-    rateOfFilm = prompt('На сколько его оцените?', '');
-    if (nameOfFilm != '' && rateOfFilm != '' && nameOfFilm.length < 50 && nameOfFilm.length != null) {
-   		personalMovieDB.movies[nameOfFilm] = rateOfFilm;    
-   		console.log('done');
-    } else{
-     	alert('Error. Do it again');
-     	i--;
-    }
 
-};
-console.log(personalMovieDB);
+function rememberMyFilms () {
+	for(let i = 0; i < 2; i++){
+		nameOfFilm = prompt('Один из последних просмотренных фильмов', '');
+	    rateOfFilm = prompt('На сколько его оцените?', '');
+	    if (nameOfFilm != '' && rateOfFilm != '' && nameOfFilm.length < 50 && nameOfFilm.length != null) {
+	   		personalMovieDB.movies[nameOfFilm] = rateOfFilm;    
+	   		console.log('done');
+	    } else{
+	     	alert('Error. Do it again');
+	     	i--;
+	    }
 
-if(personalMovieDB.count < 10){
-	console.log('Мало');
-} else if(personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
-	console.log('Классика');
-} else if(personalMovieDB.count >=30){
-	console.log('Киноман');
-}else {
-	console.log('Ошибка');
-};
+	};	
+}
+rememberMyFilms();
 
+function detectPersonalLevel () {
+	if(personalMovieDB.count < 10){
+		console.log('Мало');
+	} else if(personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+		console.log('Классика');
+	} else if(personalMovieDB.count >=30){
+		console.log('Киноман');
+	}else {
+		console.log('Ошибка');
+	};
+}
+detectPersonalLevel();
+
+function showMyDB () {
+	if (personalMovieDB.privat == false) {
+		console.log(personalMovieDB);
+	}
+}
+showMyDB();
+
+
+function writeYourGenres() {
+	
+}
+
+
+//////////////////////
 function sayHi () {
 	console.log('Hello');
 }; ///declaration
@@ -99,3 +129,4 @@ const test = '12.7px';
 console.log(parseInt(test));
 //парс это преобразование в др тип данных. В данном случае вернет только число 12
 //парсФлоат возвращает десятичные значения (крч с точкой)
+
