@@ -79,20 +79,31 @@ function detectPersonalLevel () {
 }
 detectPersonalLevel();
 
-function showMyDB () {
-	if (personalMovieDB.privat == false) {
+// function showMyDB () {
+// 	if (personalMovieDB.privat == false) {
+// 		console.log(personalMovieDB);
+// 	}
+// }
+//showMyDB();
+//или можно проще
+function showMyDB (hidden){
+	if (!hidden) {
 		console.log(personalMovieDB);
 	}
 }
-showMyDB();
+showMyDB(personalMovieDB.privat);
 
 
 function writeYourGenres() {
-	
+	for (let i = 0; i < 3; i++){
+		personalMovieDB.genres[i] = prompt(`Ваш любимый фильм под номером ${i+1}`, ''); 
+	    if (personalMovieDB.genres[i] == '' || personalMovieDB.genres[i] == null) {
+		personalMovieDB.genres[i] = prompt(`Ваш любимый фильм под номером ${i+1}`, ''); 
+		}
+	}
 }
+writeYourGenres();
 
-
-//////////////////////
 function sayHi () {
 	console.log('Hello');
 }; ///declaration
