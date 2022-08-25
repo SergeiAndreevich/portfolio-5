@@ -141,3 +141,67 @@ console.log(parseInt(test));
 //парс это преобразование в др тип данных. В данном случае вернет только число 12
 //парсФлоат возвращает десятичные значения (крч с точкой)
 
+
+//анонимные функции
+function learnJS(lang, callback) {
+	console.log(`я изучаю ${lang}`);
+	callback();
+}
+
+learnJS('JavaScript', function () {
+	console.log('callback function');
+})
+// либо написать отдельную функцию 
+// function back () { 	console.log('callback function');} а затем
+// прописать learnJS('Js', back) без скобок. Ибо back меняется местами с callback
+// а там уже есть скобки
+
+//методы объектов
+// перебор разобает через for in (фор оф не будет работать)
+// for (let key in personalMovieDB){
+// 	console.log(`У свойства ${key} значение ${personalMovieDB[key]}`);
+//}
+// почему пишет object Object? 
+// потому что при переборе мы все преобразуем в строки и это попытка js представить объект в виде строки
+// можно схитрить и сделать проверку на объект. Если это объект, то перебрать все его элементы и вывести как строки
+for (let key in personalMovieDB){
+	if(typeof(personalMovieDB[key]) === 'object'){
+		for(let i in personalMovieDB[key]){
+			console.log(`У свойства ${i} значение ${personalMovieDB[key][i]}`);
+		}
+	} else {
+	console.log(`У свойства ${key} значение ${personalMovieDB[key]}`);}  
+}
+
+// для удаления свойств имеется функция delete
+// delete personalMovieDB.privat
+
+//как посчитать количество свойств в объекте? свойства length нету и самое простое решение - счетчик
+// создаем переменную counter и counter++ каждый раз 
+// другой спосо заключается в ключах
+// console.log(object.keys(personalMovieDB));  
+//мы получим массив с названиями ключей. А далее зная свойство length можем легко посчитать количество ключей в массиве
+// object.keys(personalMovieDB).length
+
+//также мы можем сами создавать методы объектов через функции
+const options = {
+	name: 'test',
+	height: 1024,
+	width: 1024,
+	style: {
+		border: '1px',
+		color: 'black'
+	},
+	makeTest: function () {
+		console.log('test')
+	}
+};
+
+options.makeTest();
+// есть более продвинутые штуки как аксцессоры get и set но это далее
+// сейчас познакомимся с деструктуризацией объекта
+// я могу вытащить свойства бордер и колор без перебора объекта
+const {border, color} = options.style;
+console.log(border);
+//да, все работает. В консоли прописался 1px
+// все в js идет от объектов. Поэтому это объектно-ориентированный язык, но если говорить точнее, то прототипо-ориентированный
