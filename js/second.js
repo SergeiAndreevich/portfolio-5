@@ -154,5 +154,46 @@ console.log('----');
 console.log(try2);    //а вот тут уже выводится нодЛист
 console.log('----');
 console.log(try2[3]); //при таком обращении я также как и в квериСелектор обращаюсь к элементу вместе с его содержимым и могу менять
+//
+//
+//
+// Попрактикуемся в изменении элементов
+// 
+const box = document.getElementById('p-new'),
+	titles = document.getElementsByTagName('h3'),
+	sliders = document.getElementsByClassName('slider__item'),
+	titles2 = document.querySelectorAll('h3'),
+	oneHeart = document.querySelector('p');
+
+box.style.color = 'white'; //задание свойств таким образом идет через КэмелКейс
+//не забывай сохранять html файл, когда добавляешь id
+
+titles[0].style.fontSize = '48px'; //помним про коллекции и обращаемся к элементам через []
+
+sliders[2].style.backgroundColor = 'blue';
+
+// можно с помощью цикла перебрать все элементы коллекции и изменить
+for (var i = 0; i < titles2.length; i++) {
+	titles2[i].style.color = 'red';
+};
+// но так никто не делает. Можно иначе
+// все делают через forEach
+titles2.forEach( item => {
+	item.style.opacity = '70%';
+});
 
 
+//
+//
+// далее изучим методы для работы с элементами на странице.
+//
+// например в реакте работа идет на скриптах. Вот и мы сейчас научимся добавлять новые элементы в верстку через js
+const newThing = document.createElement('div'); // мы создали элемент и он существует только в js-файле. НА странице html он никак не появится от такой команды
+//
+//теперь посмотрим как создаются текстовые узлы
+//const text = document.createTextNode('тут был я');  //но этот метод используется крайне редко
+//
+//как добавить свойства, но не через style?
+newThing.classList.add('black'); // мощная штука classList 
+// и теперь нужно как-то вставить данный элемент в html
+document.body.append(newThing);
