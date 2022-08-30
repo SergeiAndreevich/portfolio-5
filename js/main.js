@@ -368,3 +368,5 @@ const john = Object.create(soldier);
 //и у джона будет броня в наследство от прототипа и метод приветствия
 john.sayHi();
 
+
+
