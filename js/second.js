@@ -322,6 +322,7 @@ link.addEventListener('click', (event) =>{
 	event.preventDefault(); // всегда сначала отменяем стандартное поведение
 	// а дальше лепим свое че хотим
 
+
 	console.log(event.target); // теперь мы не переходим по ссылке, а просто выводим ее в консоль
 
 });
@@ -333,3 +334,46 @@ link.addEventListener('click', (event) =>{
 // (1-событие, 2-функцию и 3-опцию)
 // есть опция once, которая явл альтернативой методу removeEventListener
 //btn.addEventListener('click', deleteElement, {once: true});
+
+
+// навигация по DOM
+console.log(document.head);
+console.log(document.body);  // Просто обращение к элементам
+
+console.log(document.documentElement); //получение тега html и его содержимогоъ
+
+//console.log(document.body.childNodes); //получает все узлы документа
+//Узлы - это теги, переносы и скрипты
+// Элементы же не включают переносы
+
+console.log(document.body.firstChild);
+console.log(document.body.lastChild);  // получение первого и последнего узлов
+
+//чтобы работать ттолько с элементами существуют команды 
+console.log(document.body.firstElementChild);
+console.log(document.body.lastElementChild);
+
+console.log(document.querySelector('.slider').parentNode); 
+//получить родительский узел
+
+//console.log(document.querySelector('.slider__item').parentElement); 
+//получить родительский элемент
+
+//получение соседних узлов
+console.log(document.querySelector('.slider').nextSibling);
+console.log(document.querySelector('.slider').previousSibling);
+
+//получение соседних элементов
+console.log(document.querySelector('.slider').nextElementSibling);
+console.log(document.querySelector('.slider').previousElementSibling);
+
+
+console.log('-----');
+for (let node of document.body.childNodes){
+	if(node.nodeName == '#text'){
+		continue;
+		// кст, если в html добавить комментарии, то они тоже тут отобразятся тк не являются текстом
+	}
+	console.log(node);
+};
+// в каждом узле есть прототип с прописью всех свойств. Можно ознакомиться самому 
