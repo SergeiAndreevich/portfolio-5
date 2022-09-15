@@ -53,5 +53,119 @@ function myAnimation (){
 		}
 	}
 }
-btn.addEventListener('click', myAnimation);
+//btn.addEventListener('click', myAnimation);
 
+//--------------------------------------------
+
+// изучаем даты
+const now = new Date();
+console.log(now);
+console.log(now.getFullYear());
+console.log(now.getDate());
+console.log(now.getDay());
+console.log(now.getHours());
+console.log(now.getUTCHours());
+
+console.log(now.getTimezoneOffset()); //разница идет в минутах 
+
+console.log(now.getTime()); //показывает количество милисекунд с 1970 года
+
+//если мы что-то поместим в дату, то оно вернет нам определенную дату
+//например
+const newNow = new Date(1662708969976);
+console.log(newNow);
+
+console.log(now.setHours(18, 40)); //все методы get можно изменить на set и мы будет на получать, а устанавливать опр значения
+
+
+//конструкции
+//new Date('2022-SS05-17')
+//new Date.parse('2022-05-17')
+//абсолютно одинаковые
+
+
+//бенчмарки для измерения производительности
+let start = new Date(); //засекли начало
+
+for(let i = 0; i < 100000; i++){
+	let some = i ** 3;  // ** возводит в степень 3
+};
+
+//засекаем время конца цикла
+let end = new Date();
+console.log(`Цикл отработал за ${end - start} милисекунд`);
+
+
+//-----------------------------
+//попробуем сделать таймер
+const input = '2022-09-15';
+const newDate = Date.parse(input);
+
+let nowNew = new Date();
+let output = document.querySelector('p');
+output.textContent = `итого: ${newDate}-${nowNew}`;
+console.log(`итого: ${newDate}-${nowNew}`);
+
+//.........................................................
+
+//параметры размеров
+const box = document.querySelector('.box');
+const width = box.clientWidth;
+const height = box.clientHeight;
+//это с паддингами
+console.log(width, height);
+
+const widthOff = box.offsetWidth;
+const heightOff = box.offsetHeight;
+//это уже с марджинами
+console.log(widthOff, heightOff);
+
+const widthS = box.scrollWidth;
+const heightS = box.scrollHeight;
+//а это целиком контент, вместе со скроллами
+console.log(widthS, heightS);
+
+// самое частоиспользуемое - это
+//scrollTop и scrollLeft
+// они позволяют просмотреть, сколько контента еще не просмотрено(или уже просмотрено)
+
+//например
+box.addEventListener('click', ()=>{
+	console.log(box.scrollTop);
+});
+//и получается, что когда мы пролистали, нажали кнопку
+//то в консоль выводит количество пикселей, что мы уже просмотрели
+
+//------------------------------------------------
+
+//координаты объекта в js отсчитываются от левого верхнего угла
+console.log(box.getBoundingClientRect());
+console.log(box.getBoundingClientRect().top);
+
+
+//еще можно узнать все посчитанные компьютером(примененные к объекту) стили
+const style = window.getComputedStyle(box);
+console.log(style);
+//ну и чтобы конкретное свойство узнать, то пишем
+console.log(style.display);
+//получить и поменять псевдоэлементы нельзя. Это прописано в стандарте
+//но вот получить их можно через getComputed....
+
+
+//----------------
+//разница computed и inline стилей
+//inline мы прописываем в js и добавляем прямо в строку html
+//computed стили идут из css файла
+
+//------------------------------------
+
+//как узнать количество пикселей, которые пользователь уже пролистал на странице?
+console.log(document.scrollTop); //undefiened
+console.log(document.documentElement.clientWidth); //а вот так все работает
+//
+//
+// но самое главное - это то, что мы можем это модифицировать
+//document.documentElement.scrollTop = 0;
+//
+//scrollBy - относительно текущего
+//scrollTo - перемещает относительно начала стр
