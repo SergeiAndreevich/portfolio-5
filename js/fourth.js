@@ -292,9 +292,73 @@ newObj.sum();
 		this.style.backgroundColor = 'red';
 	}); //тут выведется сам элемент, т.е кнопка
 	//пока колбек функция прописана через function(){} то будет именно тот элемент, на котором произошло событие
+//если тут изменить и написать вместо function стрелочную функцию, то потеряется контекст вызова и будет ошибка
+//при стрелочной функции нужно передать аргумент event, а вместо this -> event.target
+
 
 	//со стрелочной ф-цией другой функционал
 	////////------------------------------
 	//у стрелочной функции нет контекста вызова
 	//она берет его у своего родителя (как ребенок бездомной женщины: всегда следует за ней и берет контекст от места)
-	
+	//пример
+	const newTestObj = {
+		num:5,
+		double: function(){
+			const saySm = ()=> {
+				console.log(this);
+				console.log(this.num)
+			}
+			saySm();
+		}
+	};
+	newTestObj.double();
+//и нам вернут что контекстом для this будет функция double объекта
+
+//еще немного о стрелочной функции
+let tryM = a => a*2;
+console.log(tryM(66));
+
+
+//..................................................................
+
+//классы
+	class Rectangle{  //классы пишут с большой буквы
+		constructor(height, width){
+			this.height = height;
+			this.width = width;
+		} //свойства объектов в классе прописываются через конструктор
+
+		//а вот методы прописываются так
+		calcArea(){
+			return this.height * this.width;
+		}//как функции, но без ключевых слов
+	}
+
+	const square = new Rectangle(10,15);
+	console.log(square.calcArea());
+	const square2 = new Rectangle(4,12);
+	console.log(square2.calcArea());
+
+
+//класс может наследовать класс
+// ключевое слово extends "наследуется от"
+
+	class ColoredRectangle extends Rectangle{
+		//придется прописать все аргументы вновь
+		constructor(height, width, text, bgColor){
+			super(); //эта команда наследует от родителя все свойства конструктора, но 
+			// если пропишем в скобках опр сво-ва, то получим именно их (height)
+			this.text = text;
+			this.bgColor = bgColor;
+		}
+		writeMsg(){
+			console.log(`Text: ${this.text} and color: ${this.bgColor}`);
+			//всегда указывай контекст вызова
+		}
+
+	}
+
+	const testOne = new ColoredRectangle(13, 11, 'text', 'black');
+	testOne.calcArea();
+	//свойства надо прописать, а вот методы автоматически наследуются все
+	testOne.writeMsg();
