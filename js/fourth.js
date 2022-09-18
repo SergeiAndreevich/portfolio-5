@@ -413,3 +413,57 @@ console.log(tryM(66));
 	tab3.addNewInfo('TItle 3 ', 'Text for 3', 'img/exhibition__img1.jpg');
 	tab2.showNewInfo();
 	tab3.showNewInfo();
+
+///.............................................................
+
+
+//........
+//rest оператор
+//этот оператор позволяет сгруппировать в массив все элементы, которые мб добавлены опционально
+//т.е. мы не знаем сколько их будет, но в конце концов нам нужно их все вывести
+//выглядит это так
+function log (a, b, ...rest){
+	console.log(a,b, rest);
+}
+
+log('aaaa', 'bbb', 'cc', 'd');
+//итого, а и ь вывелись нормально, а вот остальные элементы были сгруппированы в массив и тоже выведены
+
+	function calcOrDouble(num, basis = 3){ //в ес6 появилась такая фича
+		//basis = basis || 2; //возвращает первую правду
+		//но такой способ ненадежен
+
+		//задан базис - вернет правду базис. Не задан - вернет правдой двойку		
+		console.log(num * basis);
+	}
+
+	calcOrDouble(5);
+
+//..............................................................
+
+//JSON формат
+// javaScript Object Notation 
+// представляет из себя пару ключ-значение в двойных ковычках
+
+const persone = {
+	name: 'Alex',
+	age: 17,
+	parents: {
+		mom: 'Olga',
+		dad: 'Ivan'
+	}
+};
+
+console.log(JSON.stringify(persone)); //перевод в формат json
+console.log(JSON.parse(JSON.stringify(persone))); // из json
+
+// кроме того, благодаря json мы можем делать глубокие копии
+
+//например,
+const clone = JSON.parse(JSON.stringify(persone));
+clone.parents.mom = 'Anna';
+console.log(persone);
+console.log(clone); //изменения клона не затронули оригинал
+
+//....................................................................
+
