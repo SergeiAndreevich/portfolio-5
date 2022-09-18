@@ -362,3 +362,47 @@ console.log(tryM(66));
 	testOne.calcArea();
 	//свойства надо прописать, а вот методы автоматически наследуются все
 	testOne.writeMsg();
+
+
+//.................................................................
+//.................................................................
+//практика. Используя классы, сделать карточки
+	
+	const tabs = document.querySelector('.tabs__items'),
+		tab = tabs.querySelectorAll('.tab');		
+
+	//	title = document.createElement('h2');
+	//	text = document.createElement('p');
+	
+		
+
+ 	class CreateTab {
+ 		constructor(tab){
+ 			this.tab = tab;
+ 			this.title = document.createElement('h2');
+ 			this.text = document.createElement('p');
+ 		}
+ 		addNewInfo(titleName, textContent){
+		this.title.textContent = titleName;
+ 		this.text.textContent = textContent;
+ 		}
+ 		showMe(){
+ 			console.log(`Title: ${this.title} + Text: ${this.text}`);
+ 		}
+ 		showNewInfo(){
+ 			this.tab.append(this.title);
+ 			this.tab.append(this.text);
+ 		}
+ 	};
+
+ 	const tab1 = new CreateTab(tab[0]),
+ 		tab2 = new CreateTab(tab[1]),
+ 		tab3 = new CreateTab(tab[2]);
+ 	tab1.addNewInfo('Title 1', 'Text for first title');
+// 	tab1.showMe();
+	tab1.showNewInfo();
+
+	tab2.addNewInfo('Title 2', 'Text for second');
+	tab3.addNewInfo('TItle 3 ', 'Text for 3');
+	tab2.showNewInfo();
+	tab3.showNewInfo();
