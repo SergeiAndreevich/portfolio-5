@@ -379,10 +379,13 @@ console.log(tryM(66));
  	class CreateTab {
  		constructor(tab){
  			this.tab = tab;
+ 			this.div = document.createElement('div');//
+	 		this.img = document.createElement('img'); //
  			this.title = document.createElement('h2');
  			this.text = document.createElement('p');
  		}
- 		addNewInfo(titleName, textContent){
+ 		addNewInfo(titleName, textContent, imgSrc){ //
+ 		this.img.src = imgSrc; //
 		this.title.textContent = titleName;
  		this.text.textContent = textContent;
  		}
@@ -390,6 +393,10 @@ console.log(tryM(66));
  			console.log(`Title: ${this.title} + Text: ${this.text}`);
  		}
  		showNewInfo(){
+ 			//this.div.insertAdjacentHTML('afterbegin',this.img);
+ 			//insAjHTML вставляет только html, не объекты
+ 			this.div.append(this.img); //
+ 			this.tab.append(this.div); //
  			this.tab.append(this.title);
  			this.tab.append(this.text);
  		}
@@ -398,11 +405,11 @@ console.log(tryM(66));
  	const tab1 = new CreateTab(tab[0]),
  		tab2 = new CreateTab(tab[1]),
  		tab3 = new CreateTab(tab[2]);
- 	tab1.addNewInfo('Title 1', 'Text for first title');
+ 	tab1.addNewInfo('Title 1', 'Text for first title', 'img/exhibition__img1.jpg');
 // 	tab1.showMe();
 	tab1.showNewInfo();
 
-	tab2.addNewInfo('Title 2', 'Text for second');
-	tab3.addNewInfo('TItle 3 ', 'Text for 3');
+	tab2.addNewInfo('Title 2', 'Text for second', 'img/exhibition__img1.jpg');
+	tab3.addNewInfo('TItle 3 ', 'Text for 3', 'img/exhibition__img1.jpg');
 	tab2.showNewInfo();
 	tab3.showNewInfo();
