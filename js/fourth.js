@@ -506,4 +506,39 @@ const inputRub = document.querySelector('#rub'),
 		// 2 - метод сенд был вызван, доступны заголовки и статус
 		// 3 - загрузка
 		// 4 - операция полностью завершена
+
+
+		// есть еще события
+		//loadStart
+		//progress
+		//abort
+		//timeOut
+		//
+		// ReadyStandChange - отслеживает статус готовности запроса в данный текущий момент
+		// RSChng срабатывает каждый раз, когда статус переходит из 0 в 1, из 1 в 2 итд
+		// ReadyState
+		// Load - а вто лоад работает когда све загрузилось уже полностью
+
+		request.addEventListener('onreadystatechange', ()=>{
+			if(request.readyState === 4 && request.status === 200){
+				console.log(request.response);
+				const data = JSON.parse(request.response);
+				inputUsd.value = (+inputRub.value / data.current.usd).toFixed(2);
+				//toFixed(n) округляет до n знаков после завятой
+			} else{
+				inputUsd.value = 'Smth went wrong';
+			}
+		});
+		//
+		//
+		//логика такова: слушаем событие "изменение статуса"
+		// когда статус = 4, т.е полностью загрузился и когда он успешен (состояние 200), то
+		// мы получаем ответ от сервера в виде json
+		// декодим это с помощую парсинга
+		// и далее используем как нам нужно
+
+
+		//readyStateChange используется редко
+		//чаще юзают load
+		// причем load значит что запрос завершен, но это не всегда значит, что завершен успешно		
 	});
